@@ -111,14 +111,14 @@ variable "ami_type" {
   type        = string
   description = <<-EOT
     Type of Amazon Machine Image (AMI) associated with the EKS Node Group.
-    Defaults to `AL2_x86_64`. Valid values: `AL2_x86_64`, `AL2_x86_64_GPU`, `AL2_ARM_64`, `BOTTLEROCKET_x86_64`, and `BOTTLEROCKET_ARM_64`.
+    Defaults to `AL2_x86_64`. Valid values: `CUSTOM`, `AL2_x86_64`, `AL2_x86_64_GPU`, `AL2_ARM_64`, `BOTTLEROCKET_x86_64`, and `BOTTLEROCKET_ARM_64`.
     EOT
   default     = "AL2_x86_64"
   validation {
     condition = (
-      contains(["AL2_x86_64", "AL2_x86_64_GPU", "AL2_ARM_64", "BOTTLEROCKET_x86_64", "BOTTLEROCKET_ARM_64"], var.ami_type)
+      contains(["AL2_x86_64", "AL2_x86_64_GPU", "AL2_ARM_64", "BOTTLEROCKET_x86_64", "BOTTLEROCKET_ARM_64", "CUSTOM"], var.ami_type)
     )
-    error_message = "Var ami_type must be one of \"AL2_x86_64\", \"AL2_x86_64_GPU\", \"AL2_ARM_64\", \"BOTTLEROCKET_x86_64\", and \"BOTTLEROCKET_ARM_64\"."
+    error_message = "Var ami_type must be one of \"CUSTOM\", \"AL2_x86_64\", \"AL2_x86_64_GPU\", \"AL2_ARM_64\", \"BOTTLEROCKET_x86_64\", and \"BOTTLEROCKET_ARM_64\"."
   }
 }
 
